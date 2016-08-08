@@ -1,0 +1,27 @@
+// {tablename}
+export class {classname} {~lb}{#fields}
+  {classname}:{type};   //{comment}{/fields}
+  constructor(d) {~lb}
+    Object.keys(d).forEach(k => {~lb}this[k] = d[k];{~rb});
+  {~rb}
+{~rb}
+class {classname}Holder {
+  {classname}Config:{~lb}[ID:number]:{classname}{~rb} = {~lb}{~rb};
+  load(data) {
+    Object.keys(data).forEach(k => {
+      this.{classname}Config[data[k].ID] = new {classname}(data[k]);
+    });
+  }
+  get(ID:number):{classname} {~lb}return this.{classname}Config[ID];{~rb}
+  find(ID:number):{classname} {
+    var config = this.{classname}Config[ID];
+    if (!config) {
+      var e = new Error('CONFIG_NOT_FOUND, {classname}, ID=' + ID);
+      e.code = 'CONFIG_NOT_FOUND';
+      throw e;
+    }
+    return config;
+  }
+  all():{~lb}[ID:number]:{classname}{~rb} {~lb}return this.{classname}Config;{~rb}
+  forEach(cb) {~lb}Object.keys(this.{classname}Config).forEach(k => {~lr}cb(this.{classname}Config[k]);{~rb});{~rb}
+}

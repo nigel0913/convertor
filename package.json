@@ -1,0 +1,15 @@
+{
+  "name": "convertor",
+  "version": "1.0.0",
+  "description": "convert excel to other format data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nigel0913",
+  "license": "ISC",
+  "dependencies": {
+    "dustjs-linkedin": "^2.7.3",
+    "xlsx": "0.8.0"
+  }
+}
